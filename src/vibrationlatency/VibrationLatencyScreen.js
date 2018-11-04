@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, StyleSheet, Vibration, View } from 'react-native';
 
-export default class ButtonLatencySceen extends React.Component {
+export default class VibrationLatencyScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
