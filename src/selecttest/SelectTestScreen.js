@@ -42,27 +42,27 @@ export default class SelecTestScreen extends React.Component {
   }
 
   _showButtonLatency() {
-
+    this.props.navigation.navigate("ButtonLatency", {})
   }
 
   _showLocalListView() {
-
+    this.props.navigation.navigate("LocalListView", {})
   }
 
   _showNetworkListView() {
-
+    this.props.navigation.navigate("NetworkListView", {})
   }
 
   _showHeavyComputation() {
-
+    this.props.navigation.navigate("HeavyComputation", {})
   }
 
   _showVibrationLatency() {
-
+    this.props.navigation.navigate("VibrationLatency", {})
   }
 
   _showThirdPartyNotices() {
-
+    this.props.navigation.navigate("ThirdPartyNotices", {})
   }
 }
 
