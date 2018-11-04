@@ -13,7 +13,7 @@ export default class ButtonLatencySceen extends React.Component {
     return (
       <View style={styles.container}>
         <Button title="Click me!" onPress={this._incrementCounter} />
-        <Text>{this.state.counter}</Text>
+        <Text style={styles.text}>{this.state.counter}</Text>
       </View>
     );
   }
@@ -28,6 +28,11 @@ export default class ButtonLatencySceen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
     marginHorizontal: 16
+  },
+  text: {
+    marginTop: 16
   }
 });
