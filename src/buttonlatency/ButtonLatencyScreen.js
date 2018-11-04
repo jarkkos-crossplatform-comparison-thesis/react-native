@@ -1,5 +1,7 @@
 import React from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
+
+import { Button } from "../components";
 
 export default class ButtonLatencySceen extends React.Component {
   constructor(props) {
@@ -12,7 +14,7 @@ export default class ButtonLatencySceen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Button title="Click me!" onPress={this._incrementCounter} />
+        <Button title="Click me!" onPressIn={this._incrementCounter} />
         <Text style={styles.text}>{this.state.counter}</Text>
       </View>
     );

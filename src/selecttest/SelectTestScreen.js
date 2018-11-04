@@ -1,5 +1,7 @@
 import React from 'react';
-import { Button, Image, StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, View } from 'react-native';
+
+import { Button } from "../components";
 
 const reactNativeLogo = require("../../assets/img/react-native-logo.png")
 
@@ -28,41 +30,24 @@ export default class SelecTestScreen extends React.Component {
   }
 
   _renderNavigationButtons() {
-    //TODO: make a custom Button component for easier styling and onPressIn support
-    return (
-      <View>
-        <View style={styles.navigationButton}><Button title="Button latency" onPress={this._showButtonLatency.bind(this)} /></View>
-        <View style={styles.navigationButton}><Button title="Local listview" onPress={this._showLocalListView.bind(this)} /></View>
-        <View style={styles.navigationButton}><Button title="Nerwork listview" onPress={this._showNetworkListView.bind(this)} /></View>
-        <View style={styles.navigationButton}><Button title="Heavy computation" onPress={this._showHeavyComputation.bind(this)} /></View>
-        <View style={styles.navigationButton}><Button title="Vibration latency" onPress={this._showVibrationLatency.bind(this)} /></View>
-        <View style={styles.navigationButton}><Button title="Third party notices" onPress={this._showThirdPartyNotices.bind(this)} /></View>
+    const renderButton = (title, onPressIn) => (
+      <View style={styles.navigationButton}>
+        <Button title={title} onPressIn={onPressIn} />
       </View>
     );
-  }
 
-  _showButtonLatency() {
-    this.props.navigation.navigate("ButtonLatency", {})
-  }
+    const { navigate } = this.props.navigation;
 
-  _showLocalListView() {
-    this.props.navigation.navigate("LocalListView", {})
-  }
-
-  _showNetworkListView() {
-    this.props.navigation.navigate("NetworkListView", {})
-  }
-
-  _showHeavyComputation() {
-    this.props.navigation.navigate("HeavyComputation", {})
-  }
-
-  _showVibrationLatency() {
-    this.props.navigation.navigate("VibrationLatency", {})
-  }
-
-  _showThirdPartyNotices() {
-    this.props.navigation.navigate("ThirdPartyNotices", {})
+    return (
+      <View>
+        {renderButton("Button latency", () => { navigate("ButtonLatency") })}
+        {renderButton("Local listview", () => { navigate("LocalListView") })}
+        {renderButton("Nerwork listview", () => { navigate("NetworkListView") })}
+        {renderButton("Heavy computation", () => { navigate("HeavyComputation") })}
+        {renderButton("Vibration latency", () => { navigate("VibrationLatency") })}
+        {renderButton("Third party notices", () => { navigate("ThirdPartyNotices") })}
+      </View>
+    );
   }
 }
 
