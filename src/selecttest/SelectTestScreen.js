@@ -28,14 +28,15 @@ export default class SelecTestScreen extends React.Component {
   }
 
   _renderNavigationButtons() {
+    //TODO: make a custom Button component for easier styling and onPressIn support
     return (
       <View>
-        <View style={styles.navigationButton}><Button title="Button latency" onPress={this._showButtonLatency} /></View>
-        <View style={styles.navigationButton}><Button title="Local listview" onPress={this._showLocalListView} /></View>
-        <View style={styles.navigationButton}><Button title="Nerwork listview" onPress={this._showNetworkListView} /></View>
-        <View style={styles.navigationButton}><Button title="Heavy computation" onPress={this._showHeavyComputation} /></View>
-        <View style={styles.navigationButton}><Button title="Vibration latency" onPress={this._showVibrationLatency} /></View>
-        <View style={styles.navigationButton}><Button title="Third party notices" onPress={this._showThirdPartyNotices} /></View>
+        <View style={styles.navigationButton}><Button title="Button latency" onPress={this._showButtonLatency.bind(this)} /></View>
+        <View style={styles.navigationButton}><Button title="Local listview" onPress={this._showLocalListView.bind(this)} /></View>
+        <View style={styles.navigationButton}><Button title="Nerwork listview" onPress={this._showNetworkListView.bind(this)} /></View>
+        <View style={styles.navigationButton}><Button title="Heavy computation" onPress={this._showHeavyComputation.bind(this)} /></View>
+        <View style={styles.navigationButton}><Button title="Vibration latency" onPress={this._showVibrationLatency.bind(this)} /></View>
+        <View style={styles.navigationButton}><Button title="Third party notices" onPress={this._showThirdPartyNotices.bind(this)} /></View>
       </View>
     );
   }
@@ -68,7 +69,6 @@ export default class SelecTestScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     marginHorizontal: 16
   },
   headerContainer: {
