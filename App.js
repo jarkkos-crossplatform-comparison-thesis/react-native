@@ -6,6 +6,7 @@ import {
 
 import SelectTestScreen from "./src/selecttest";
 import ButtonLatencyScreen from "./src/buttonlatency";
+import HeavyComputationScreen from "./src/heavycomputation";
 import VibrationLatency from "./src/vibrationlatency";
 
 class NotImplemented extends React.Component {
@@ -19,7 +20,7 @@ const App = createStackNavigator({
   ButtonLatency: { screen: ButtonLatencyScreen },
   LocalListView: { screen: NotImplemented },
   NetworkListView: { screen: NotImplemented },
-  HeavyComputation: { screen: NotImplemented },
+  HeavyComputation: { screen: HeavyComputationScreen },
   VibrationLatency: { screen: VibrationLatency },
   ThirdPartyNotices: { screen: NotImplemented }
 });
