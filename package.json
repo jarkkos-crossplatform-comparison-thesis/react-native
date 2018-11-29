@@ -4,11 +4,14 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
+    "bundle-workers-android": "node node_modules/react-native/local-cli/cli.js bundle --dev false --assets-dest ./android/app/src/main/res/ --entry-file src/heavycomputation/findPrimes.js --platform android --bundle-output ./android/app/src/main/assets/threads/src/heavycomputation/findPrimes.bundle",
+    "bundle-workers-ios": "node node_modules/react-native/local-cli/cli.js bundle --dev false --assets-dest ./ios --entry-file src/heavycomputation/findPrimes.js --platform ios --bundle-output ./ios/src/heavycomputation/findPrimes.jsbundle"
     "test": "jest"
   },
   "dependencies": {
     "react": "16.6.1",
     "react-native": "0.57.7",
+    "react-native-threads": "^0.0.15",
     "react-navigation": "2.18.2"
   },
   "devDependencies": {

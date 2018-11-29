@@ -1,3 +1,11 @@
+import { self } from "react-native-threads";
+
+self.onmessage = (numberAsString) => {
+  const primes = findPrimesBelow(parseInt(numberAsString));
+  const primesStr = JSON.stringify(primes);
+  self.postMessage(primesStr);
+}
+
 function findPrimesBelow(number) {
   const primes = [];
 
@@ -21,5 +29,3 @@ function isPrimeNumber(number) {
   
   return true
 }
-
-module.exports = findPrimesBelow;

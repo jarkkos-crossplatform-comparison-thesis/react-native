@@ -5,17 +5,23 @@ import {
   Text,
   View
 } from 'react-native';
+import { Thread } from "react-native-threads";
 
 import { Button } from "../components";
-
-import findPrimesBelow from "./findPrimes";
 
 export default class HeavyComputationScreen extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       computationStatus: "idle",
+      curThread: undefined,
     };
+  }
+
+  componentWillUnmount() {
+    if (this.state.curThread) {
+      this.state.curThread.terminate();
+    }
   }
 
   render() {
@@ -43,29 +49,24 @@ export default class HeavyComputationScreen extends React.Component {
   }
 
   _startComputation = () => {
-    const max = 3000000;
+    const max = "3000000";
 
-    if (this.state.computationPromise) {
-      this.state.computationPromise.cancelled = true;
+    if (this.state.curThread) {
+      this.state.curThread.terminate();
     }
 
-    const computationPromise = new Promise((resolve) => {
-      setTimeout(() =>{
-        findPrimesBelow(max);
-        resolve();
-      }, 0);
-    }).then(() => {
-      if (!this.cancelled) {
-        this.setState({
-          computationStatus: "done",
-          computationPromise: undefined
-        });
-      }
-    });
+    const workerThread = new Thread("src/heavycomputation/findPrimes.js");
+    workerThread.onmessage = () => {
+      this.setState({
+        computationStatus: "done",
+        curThread: undefined
+      });
+    };
+    workerThread.postMessage(max);
 
     this.setState({
       computationStatus: "computing",
-      computationPromise: computationPromise
+      curThread: workerThread
     });
   }
 }
