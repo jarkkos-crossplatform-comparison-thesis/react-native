@@ -3,7 +3,7 @@ import { Image, StyleSheet, Text, View } from 'react-native';
 
 import { Button } from "../components";
 
-const reactNativeLogo = require("../../assets/img/react-native-logo.png")
+const reactNativeLogo = require("../../assets/img/react-native-logo.png");
 
 export default class SelecTestScreen extends React.Component {
   render() {
