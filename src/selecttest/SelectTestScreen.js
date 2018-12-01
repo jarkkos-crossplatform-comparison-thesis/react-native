@@ -42,7 +42,7 @@ export default class SelecTestScreen extends React.Component {
       <View>
         {renderButton("Button latency", () => { navigate("ButtonLatency") })}
         {renderButton("Local listview", () => { navigate("LocalListView") })}
-        {renderButton("Nerwork listview", () => { navigate("NetworkListView") })}
+        {renderButton("Network listview", () => { navigate("NetworkListView") })}
         {renderButton("Heavy computation", () => { navigate("HeavyComputation") })}
         {renderButton("Vibration latency", () => { navigate("VibrationLatency") })}
         {renderButton("Third party notices", () => { navigate("ThirdPartyNotices") })}

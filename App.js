@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text } from "react-native";
+import { Animated, Easing, Text } from "react-native";
 import {
   createStackNavigator
 } from "react-navigation";
@@ -26,14 +26,40 @@ const wrapListItemsWithDataLoader = (dataLoader) => {
   }
 };
 
-const App = createStackNavigator({
-  Landing: { screen: SelectTestScreen },
-  ButtonLatency: { screen: ButtonLatencyScreen },
-  LocalListView: { screen: wrapListItemsWithDataLoader(localDataLoader) },
-  NetworkListView: { screen: wrapListItemsWithDataLoader(networkDataLoader) },
-  HeavyComputation: { screen: HeavyComputationScreen },
-  VibrationLatency: { screen: VibrationLatency },
-  ThirdPartyNotices: { screen: NotImplemented }
-});
+
+//transitionConfig to remove animations from:
+//https://github.com/react-navigation/react-navigation/issues/1254#issuecomment-346319921
+const App = createStackNavigator(
+  {
+    Landing: { screen: SelectTestScreen },
+    ButtonLatency: { screen: ButtonLatencyScreen },
+    LocalListView: { screen: wrapListItemsWithDataLoader(localDataLoader) },
+    NetworkListView: { screen: wrapListItemsWithDataLoader(networkDataLoader) },
+    HeavyComputation: { screen: HeavyComputationScreen },
+    VibrationLatency: { screen: VibrationLatency },
+    ThirdPartyNotices: { screen: NotImplemented }
+  }, {
+    transitionConfig: () => ({
+      transitionSpec: {
+        duration: 0,
+        timing: Animated.timing,
+        easing: Easing.step0,
+      },
+      screenInterpolator: sceneProps => {
+         const { layout, position, scene } = sceneProps;
+         const { index } = scene;
+         const width = layout.initWidth;
+         const translateX = position.interpolate({
+           inputRange: [index - 1, index, index + 1],
+           outputRange: [width, 0, 0],
+         });
+         if (index <= 1){
+             return {};
+         }
+  
+         return {transform: [{ translateX }] };
+       }
+  })
+  });
 
 export default App;
