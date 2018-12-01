@@ -7,7 +7,7 @@ import {
 import SelectTestScreen from "./src/selecttest";
 import ButtonLatencyScreen from "./src/buttonlatency";
 import HeavyComputationScreen from "./src/heavycomputation";
-import { ListItemsScreen, localDataLoader, networkDataLoader } from "./src/listitems";
+import { LocalListItemsScreen, NetworkListItemsScreen } from "./src/listitems";
 import VibrationLatency from "./src/vibrationlatency";
 
 class NotImplemented extends React.Component {
@@ -16,25 +16,14 @@ class NotImplemented extends React.Component {
   }
 }
 
-const wrapListItemsWithDataLoader = (dataLoader) => {
-  return class extends React.Component {
-    static navigationOptions = ListItemsScreen.navigationOptions;
-
-    render() {
-      return <ListItemsScreen loadData={dataLoader} {...this.props} />
-    }
-  }
-};
-
-
 //transitionConfig to remove animations from:
 //https://github.com/react-navigation/react-navigation/issues/1254#issuecomment-346319921
 const App = createStackNavigator(
   {
     Landing: { screen: SelectTestScreen },
     ButtonLatency: { screen: ButtonLatencyScreen },
-    LocalListView: { screen: wrapListItemsWithDataLoader(localDataLoader) },
-    NetworkListView: { screen: wrapListItemsWithDataLoader(networkDataLoader) },
+    LocalListView: { screen: LocalListItemsScreen },
+    NetworkListView: { screen: NetworkListItemsScreen },
     HeavyComputation: { screen: HeavyComputationScreen },
     VibrationLatency: { screen: VibrationLatency },
     ThirdPartyNotices: { screen: NotImplemented }
