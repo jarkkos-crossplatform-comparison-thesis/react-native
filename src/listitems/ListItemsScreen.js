@@ -19,31 +19,32 @@ export default class ListItemsScreen extends React.Component {
   }
 
   componentDidMount() {
-    this.props.dataLoader.loadData
-      .then((data) => {
-        this.setState({
-          listItems: data,
-          error: undefined
+    this.props.loadData()
+      .then(
+        (data) => {
+          this.setState({
+            listItems: data,
+            error: undefined
+          });
+        },
+        (error) => {
+          this.setState({
+            listItems: undefined,
+            error: error
+          });
         });
-      })
-      .reject((error) => {
-        this.setState({
-          listItems: undefined,
-          error: error
-        });
-      });
   }
 
   render() {
     const { listItems, error } = this.state;
     if (listItems) {
-      this._renderListItems(listItems);
+      return this._renderLoadedListItems(listItems);
     }
     else if (error) {
-      this._renderError(error);
+      return this._renderError(error);
     }
     else {
-      this._renderLoading();
+      return this._renderLoading();
     }
   }
 
@@ -57,12 +58,12 @@ export default class ListItemsScreen extends React.Component {
     );
   }
 
-  _keyExtractor = (item, idx) => idx;
+  _keyExtractor = (item, idx) => { return idx.toString() }
 
-  _renderListItem(item) {
+  _renderListItem({item}) {
     return (
       <View style={styles.listItemContainer}>
-        <Image source={item.source} style={styles.listItemImage} />
+        <Image source={{uri: item.imageSrc}} style={styles.listItemImage} />
         <Text style={styles.listItemDescription}>{item.description}</Text>
       </View>
     );
@@ -71,7 +72,7 @@ export default class ListItemsScreen extends React.Component {
   _renderLoading() {
     return <ActivityIndicator />;
   }
-  
+
   _renderError(error) {
     return <Text>{error.toString()}</Text>
   }
@@ -82,7 +83,8 @@ const styles = StyleSheet.create({
     flexDirection: "row"
   },
   listItemImage: {
-
+    width: 80,
+    height: 80
   },
   listItemDescription: {
 

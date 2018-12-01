@@ -7,6 +7,7 @@ import {
 import SelectTestScreen from "./src/selecttest";
 import ButtonLatencyScreen from "./src/buttonlatency";
 import HeavyComputationScreen from "./src/heavycomputation";
+import { ListItemsScreen, localDataLoader, networkDataLoader } from "./src/listitems";
 import VibrationLatency from "./src/vibrationlatency";
 
 class NotImplemented extends React.Component {
@@ -15,11 +16,21 @@ class NotImplemented extends React.Component {
   }
 }
 
+const wrapListItemsWithDataLoader = (dataLoader) => {
+  return class extends React.Component {
+    static navigationOptions = ListItemsScreen.navigationOptions;
+
+    render() {
+      return <ListItemsScreen loadData={dataLoader} {...this.props} />
+    }
+  }
+};
+
 const App = createStackNavigator({
   Landing: { screen: SelectTestScreen },
   ButtonLatency: { screen: ButtonLatencyScreen },
-  LocalListView: { screen: NotImplemented },
-  NetworkListView: { screen: NotImplemented },
+  LocalListView: { screen: wrapListItemsWithDataLoader(localDataLoader) },
+  NetworkListView: { screen: wrapListItemsWithDataLoader(networkDataLoader) },
   HeavyComputation: { screen: HeavyComputationScreen },
   VibrationLatency: { screen: VibrationLatency },
   ThirdPartyNotices: { screen: NotImplemented }
