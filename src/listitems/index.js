@@ -5,8 +5,6 @@ import { localDataLoader, networkDataLoader } from "./DataLoaders";
 
 const wrapListItemsWithDataLoader = (dataLoader) => {
   return class extends React.Component {
-    static navigationOptions = ListItemsScreen.navigationOptions;
-
     render() {
       return <ListItemsScreen loadData={dataLoader} {...this.props} />
     }
