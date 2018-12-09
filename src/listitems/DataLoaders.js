@@ -1,6 +1,15 @@
+import { Platform } from 'react-native';
+
 export const localDataLoader = () => {
   return new Promise((resolve, reject) => {
-    const listItems = require("../../assets/listItems.json");
+    let listItems;
+    if (Platform.OS === "ios") {
+      listItems = require("../../assets/iosListItems.json");
+    }
+    else {
+      listItems = require("../../assets/androidListItems.json");
+    }
+
     resolve(listItems);
   });
 }

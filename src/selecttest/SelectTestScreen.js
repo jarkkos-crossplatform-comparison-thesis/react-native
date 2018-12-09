@@ -21,7 +21,7 @@ export default class SelecTestScreen extends React.Component {
         <Image source={reactNativeLogo} style={styles.logoImage} />
         <View style={styles.appInfoContainer}>
           <Text>React Native</Text>
-          <Text>Version whatever</Text>
+          <Text>Version 1</Text>
           <Text>Select a test</Text>
         </View>
         <Image source={reactNativeLogo} style={styles.logoImage} />
