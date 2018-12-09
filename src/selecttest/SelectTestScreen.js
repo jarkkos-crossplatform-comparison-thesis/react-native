@@ -68,7 +68,6 @@ const styles = StyleSheet.create({
     height: 50
   },
   navigationButton: {
-    marginTop: 16,
-    backgroundColor: "#777"
+    marginTop: 16
   }
 });

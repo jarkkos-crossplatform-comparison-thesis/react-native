@@ -8,13 +8,9 @@ import SelectTestScreen from "./src/selecttest";
 import ButtonLatencyScreen from "./src/buttonlatency";
 import HeavyComputationScreen from "./src/heavycomputation";
 import { LocalListItemsScreen, NetworkListItemsScreen } from "./src/listitems";
+import ThirdPartyNotices from "./src/thirdpartynotices";
 import VibrationLatency from "./src/vibrationlatency";
 
-class NotImplemented extends React.Component {
-  render() {
-    return <Text>Not implemented</Text>;
-  }
-}
 
 //transitionConfig to remove animations from:
 //https://github.com/react-navigation/react-navigation/issues/1254
@@ -57,7 +53,7 @@ const App = createStackNavigator(
       })
     },
     ThirdPartyNotices: {
-      screen: NotImplemented,
+      screen: ThirdPartyNotices,
       navigationOptions: ({ navigation }) => ({
         title: "Third party notices"
       })
