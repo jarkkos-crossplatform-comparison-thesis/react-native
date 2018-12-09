@@ -14,10 +14,21 @@ export default class ButtonLatencySceen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Button title="Click me!" onPressIn={this._incrementCounter} />
-        <Text style={styles.text}>{this.state.counter}</Text>
+        {this._renderGoBackButton()}
+        <View style={styles.testContentContainer}>
+          <Button title="Click me!" onPressIn={this._incrementCounter} />
+          <Text style={styles.text}>{this.state.counter}</Text>
+        </View>
       </View>
     );
+  }
+
+  _renderGoBackButton() {
+    return <Button title="Go back without animation" onPressIn={this._goBack} />
+  }
+
+  _goBack = () => {
+    this.props.navigation.goBack();
   }
 
   _incrementCounter = () => {
@@ -29,6 +40,9 @@ export default class ButtonLatencySceen extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+  },
+  testContentContainer: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
