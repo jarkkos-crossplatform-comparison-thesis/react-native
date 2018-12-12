@@ -37,9 +37,9 @@ Based Vision. 2004</Text>
   }
 
   _renderLoremIpsumAttribution() {
-    <View style={styles.noticeContainer}>
+    return (<View style={styles.noticeContainer}>
       <Text style={styles.noticeTitle}>Placeholder texts generated at https://www.lipsum.com/</Text>
-    </View>
+    </View>);
   }
 }
 
