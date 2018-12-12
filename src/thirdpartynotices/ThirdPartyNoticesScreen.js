@@ -9,6 +9,7 @@ export default class ThirdPartyNoticesScreen extends React.Component {
         {this._renderNotice("React Navigation", "React Navigation Contributors", "https://reactnavigation.org/")}
         {this._renderNotice("React Native Threads", "Travis Nuttall", "https://github.com/joltup/react-native-threads")}
         {this._renderImageAttribution()}
+        {this._renderLoremIpsumAttribution()}
       </View>
     );
   }
@@ -33,6 +34,12 @@ from few training examples: an incremental Bayesian approach tested on
 Based Vision. 2004</Text>
       </View>
     );
+  }
+
+  _renderLoremIpsumAttribution() {
+    <View style={styles.noticeContainer}>
+      <Text style={styles.noticeTitle}>Placeholder texts generated at https://www.lipsum.com/</Text>
+    </View>
   }
 }
 
