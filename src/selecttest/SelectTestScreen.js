@@ -21,7 +21,7 @@ export default class SelecTestScreen extends React.Component {
         <Image source={reactNativeLogo} style={styles.logoImage} />
         <View style={styles.appInfoContainer}>
           <Text>React Native</Text>
-          <Text>Version 1</Text>
+          <Text>Version 2</Text>
           <Text>Select a test</Text>
         </View>
         <Image source={reactNativeLogo} style={styles.logoImage} />
@@ -39,7 +39,7 @@ export default class SelecTestScreen extends React.Component {
     const { navigate } = this.props.navigation;
 
     return (
-      <View>
+      <View style={styles.buttonContainer}>
         {renderButton("Button latency", () => { navigate("ButtonLatency") })}
         {renderButton("Local listview", () => { navigate("LocalListView") })}
         {renderButton("Network listview", () => { navigate("NetworkListView") })}
@@ -67,7 +67,11 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50
   },
+  buttonContainer: {
+    alignItems: "center",
+  },
   navigationButton: {
-    marginTop: 16
+    marginTop: 16,
+    width: 220
   }
 });
