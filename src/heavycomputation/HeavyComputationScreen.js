@@ -41,7 +41,12 @@ export default class HeavyComputationScreen extends React.Component {
       return <Text>Click to start</Text>;
     }
     else if (computationStatus == "computing") {
-      return <ActivityIndicator />;
+      return (
+        <View>
+          <Text>Computing...</Text>
+          <ActivityIndicator />
+        </View>
+      );
     }
     else {
       return <Text>Done</Text>;
@@ -79,6 +84,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 16
   },
   statusContainer: {
-    marginTop: 16
+    marginTop: 16,
+    height: 20
   }
 });

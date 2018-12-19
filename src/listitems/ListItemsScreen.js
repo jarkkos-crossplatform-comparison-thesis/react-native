@@ -60,17 +60,17 @@ export default class ListItemsScreen extends React.Component {
 
   _keyExtractor = (item, idx) => { return idx.toString() }
 
-  _renderListItem({item}) {
+  _renderListItem({ item }) {
     return (
       <View style={styles.listItemContainer}>
-        <Image source={{uri: item.imageSrc}} style={styles.listItemImage} />
+        <Image source={{ uri: item.imageSrc }} style={styles.listItemImage} />
         <Text style={styles.listItemDescription}>{item.description}</Text>
       </View>
     );
   }
 
   _renderLoading() {
-    return <ActivityIndicator />;
+    return null;
   }
 
   _renderError(error) {
