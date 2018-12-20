@@ -9,8 +9,11 @@ export default class SelecTestScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        {this._renderAppInfo()}
-        {this._renderNavigationButtons()}
+        <View style={styles.contentContainer}>
+          {this._renderAppInfo()}
+          {this._renderNavigationButtons()}
+        </View>
+        {this._renderFooter()}
       </View>
     );
   }
@@ -21,7 +24,7 @@ export default class SelecTestScreen extends React.Component {
         <Image source={reactNativeLogo} style={styles.logoImage} />
         <View style={styles.appInfoContainer}>
           <Text>React Native</Text>
-          <Text>Version 3</Text>
+          <Text>Version 4</Text>
           <Text>Select a test</Text>
         </View>
         <Image source={reactNativeLogo} style={styles.logoImage} />
@@ -49,10 +52,17 @@ export default class SelecTestScreen extends React.Component {
       </View>
     );
   }
+
+  _renderFooter() {
+    return <View style={styles.footer} />;
+  }
 }
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1
+  },
+  contentContainer: {
     flex: 1,
     marginHorizontal: 16
   },
@@ -73,5 +83,13 @@ const styles = StyleSheet.create({
   navigationButton: {
     marginTop: 16,
     width: 220
+  },
+  footer: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    height: 12,
+    width: "100%",
+    backgroundColor: "red"
   }
 });

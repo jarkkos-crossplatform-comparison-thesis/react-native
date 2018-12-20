@@ -19,12 +19,17 @@ export default class ButtonLatencySceen extends React.Component {
           <Button title="Click me!" onPressIn={this._incrementCounter} />
           <Text style={styles.text}>{this.state.counter}</Text>
         </View>
+        {this._renderFooter()}
       </View>
     );
   }
 
   _renderGoBackButton() {
     return <Button title="Go back without animation" onPressIn={this._goBack} />
+  }
+
+  _renderFooter() {
+    return <View style={styles.footer} />;
   }
 
   _goBack = () => {
@@ -50,5 +55,13 @@ const styles = StyleSheet.create({
   },
   text: {
     marginTop: 16
+  },
+  footer: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    height: 12,
+    width: "100%",
+    backgroundColor: "green"
   }
 });
